@@ -1,0 +1,24 @@
+.inputContainer{
+    background-color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+    padding: 0 5px 0 10px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.searchBtn{
+    height: 35px;
+    width: 35px;
+    background-color: black;
+    border-radius: 50%;
+    color: white;
+    border: none;
+}

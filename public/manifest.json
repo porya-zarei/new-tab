@@ -1,23 +1,35 @@
 {
     "manifest_version": 2,
-    "name": "Youtube Resume",
-    "author": "Sebastien Beaury",
+    "name": "PZE-newTab",
+    "author": "Porya Zarei",
     "version": "1.0.0",
-    "description": "Resume your videos on Youtube.",
+    "description": "custome new Tab extention",
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
-    "permissions": ["tabs", "*://www.youtube.com/*", "storage"],
+    "content_security_policy": "script-src 'self' 'sha256-uak/ErfaQ/oDWxg/Lkw0ntAwzYdFxYSuPGNr2NpGb7U='; object-src 'self'",
+    "permissions": ["tabs", "storage"],
     "browser_action": {
         "default_icon": "logo192.png",
-        "default_title": "My New Tab"
+        "default_title": "New Tab"
     },
-    "content_security_policy": "script-src 'self' https://www.youtube.com/iframe_api https://s.ytimg.com/yts/jsbin/www-widgetapi-vflEtXIPQ/www-widgetapi.js https://img.icons8.com/dusk/2x/youtube-play.png 'sha256-bYa5+qTPCwiUjcorwLU5xL8hkt2cfxlYzC1xEaFW6VA='; object-src 'self'",
     "content_scripts": [
         {
-            "matches": ["<all_urls>"],
+            "matches": [
+                "<all_urls>",
+                "http://*/*",
+                "https://*/*",
+                "https://cdn.weatherapi.com/*/*/*/*",
+                "https://cdn.weatherapi.com/*/*/*",
+                "https://cdn.weatherapi.com/*/*/*/*"
+            ],
             "js": ["/static/js/main.js"],
-            "css":["/static/css/style.css"]
+            "css": ["/static/css/style.css"],
+            "image": [
+                "/static/images/background.png",
+                "/static/images/moon.png",
+                "/static/images/sun.png"
+            ]
         }
     ]
 }
