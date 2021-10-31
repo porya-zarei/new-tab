@@ -8,8 +8,7 @@ const SwitchRouter = () => {
         <Switch>
             <Route path={"/setting"} component={Setting} />
             <Route path={"/tasks"} component={Tasks} />
-            <Route exact path={"/"} component={HomePage} />
-            <Route component={HomePage} />
+            <Route exact path={["/","*/*","*"]} component={HomePage} />
         </Switch>
     );
 };

@@ -1,4 +1,5 @@
 import {createContext, useEffect, useState} from "react";
+import {getAllNews} from "../../apis/get-news";
 
 export const getRandom = () => Math.random().toString().slice(0, 5);
 
@@ -38,7 +39,7 @@ export const MainContext = createContext({
     ) => {},
     deleteTask: (id = "") => {},
     editTask: (
-        id="",
+        id = "",
         task = {
             id: "",
             title: "",
@@ -47,6 +48,20 @@ export const MainContext = createContext({
             color: "",
         },
     ) => {},
+    calendarSelectedDay: null,
+    setCalendarSelectedDay: () => {},
+    allNews: [
+        {
+            author: "",
+            content: "",
+            date: "",
+            imageUrl: "",
+            readMoreUrl: "",
+            time: "",
+            title: "",
+            url: "",
+        },
+    ],
 });
 const MainContextProvider = ({children}) => {
     const [backGroundImage, setBackgroundImage] = useState(
@@ -57,6 +72,9 @@ const MainContextProvider = ({children}) => {
         {id: "", address: "", name: ""},
     ]);
     const [tasks, setTasks] = useState([]);
+    const [calendarSelectedDay, setCalendarSelectedDay] = useState();
+
+    const [allNews, setAllNews] = useState([]);
 
     const addTask = (
         task = {
@@ -94,7 +112,7 @@ const MainContextProvider = ({children}) => {
         } else {
             task.finishDate = "future";
         }
-        const newTasks = tasks.filter(t => t.id !== id);
+        const newTasks = tasks.filter((t) => t.id !== id);
         newTasks.push(task);
         localStorage.setItem("user-tasks", JSON.stringify(newTasks));
         setTasks([...newTasks]);
@@ -132,6 +150,9 @@ const MainContextProvider = ({children}) => {
         if (localStorage.getItem("user-tasks")) {
             setTasks(JSON.parse(localStorage.getItem("user-tasks")));
         }
+        getAllNews().then((res) => {
+            setAllNews(res.data);
+        });
     }, []);
     const context = {
         backGroundImage,
@@ -145,6 +166,9 @@ const MainContextProvider = ({children}) => {
         addTask,
         deleteTask,
         editTask,
+        calendarSelectedDay,
+        setCalendarSelectedDay,
+        allNews,
     };
     return (
         <MainContext.Provider value={context}>{children}</MainContext.Provider>

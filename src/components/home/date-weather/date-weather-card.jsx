@@ -11,27 +11,38 @@ const DateWeatherCard = () => {
     const [temp, setTemp] = useState("13 C , 34 F");
     const [weather, setWeather] = useState("Sunny");
     const [image, setImage] = useState("/static/images/moon.png");
+
     useEffect(() => {
-        const intervalNumber = setInterval(() => {
-            setTime(new Date().toLocaleTimeString("fa-IR"));
-        }, 1000);
         fetcher({
             url: `http://api.weatherapi.com/v1/current.json?key=${weather_API_Key}&q=${userCity}&aqi=no`,
         }).then(({data}) => {
             console.log("data => ", data);
-            setImage("https:"+data?.current?.condition?.icon);
+            setImage("https:" + data?.current?.condition?.icon);
             setWeather(data?.current?.condition?.text);
-            setTemp("Temp : " + data.current.temp_c + " C , " + data.current.temp_f + " F");
+            setTemp(
+                "Temp : " +
+                    data.current.temp_c +
+                    " C , " +
+                    data.current.temp_f +
+                    " F",
+            );
         });
+    }, [userCity]);
+
+    useEffect(() => {
+        const intervalNumber = setInterval(() => {
+            setTime(new Date().toLocaleTimeString("fa-IR"));
+        }, 1000);
         return () => {
             clearInterval(intervalNumber);
         };
     }, []);
+
     return (
         <Card
             borderRadius={"20px"}
             title={date + " | " + time}
-            text={"weather : "+weather}
+            text={"weather : " + weather}
             badgeLabel={temp}
             imageSource={image}
         />

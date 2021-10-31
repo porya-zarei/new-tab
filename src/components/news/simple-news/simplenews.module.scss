@@ -1,0 +1,36 @@
+.container{
+    padding:7px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid black;
+    width: auto;
+    height: auto;
+    &>a>div{
+        display: none;
+    }
+    &:hover > a> div{
+        display: block;
+    }
+    &:hover{
+        background-color: rgba(49, 49, 49, 0.479);
+    }
+}
+.newsLink{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+    overflow: hidden;
+}
+// .newsLink:hover > div{
+//     display: block !important;
+// }
+// .newsLink > div{
+//     display: none;
+// }
+

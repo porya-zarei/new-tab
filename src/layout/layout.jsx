@@ -6,26 +6,20 @@ import Header from "./header/header";
 import Main from "./main/main";
 
 const Layout = ({children}) => {
-    const {backGroundImage, setBackgroundImage} = useContext(MainContext);
-    useEffect(() => {
-        // https://picsum.photos/200/300
-        fetcher({url: "https://picsum.photos/1200/800"}).then(({data}) => {
-            setBackgroundImage(data);
-            console.log(data);
-        });
-    }, []);
+    const {backGroundImage} = useContext(MainContext);
+
     return (
         <div
             style={{
                 width: "100%",
                 height: "100vh",
                 backgroundImage: `url(${backGroundImage})`,
-                backgroundSize:"cover",
-                backgroundPosition:"center",
-                backgroundRepeat:"no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 backgroundColor: "black",
-            }}
-            className="">
+                overflowY: "auto",
+            }}>
             <Header />
             <Main>{children}</Main>
             <Footer />
