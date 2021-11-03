@@ -1,7 +1,7 @@
+import Container from "../switch-router/container";
+
 const News = () => {
-    return ( 
-        <div></div>
-     );
-}
- 
+    return <Container></Container>;
+};
+
 export default News;

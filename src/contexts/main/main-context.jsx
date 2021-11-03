@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useEffect, useMemo, useState} from "react";
 import {getAllNews} from "../../apis/get-news";
 
 export const getRandom = () => Math.random().toString().slice(0, 5);
@@ -62,6 +62,8 @@ export const MainContext = createContext({
             url: "",
         },
     ],
+    convertApiSecretKey: "",
+    changeConvertApiSecretKey: (secret="") => {},
 });
 const MainContextProvider = ({children}) => {
     const [backGroundImage, setBackgroundImage] = useState(
@@ -75,6 +77,13 @@ const MainContextProvider = ({children}) => {
     const [calendarSelectedDay, setCalendarSelectedDay] = useState();
 
     const [allNews, setAllNews] = useState([]);
+
+    const [convertApiSecretKey, setConvertApiSecretKey] = useState();
+
+    const changeConvertApiSecretKey = (secret) =>{
+        localStorage.setItem("convertApiSecretKey",secret);
+        setConvertApiSecretKey(secret);
+    }
 
     const addTask = (
         task = {
@@ -150,26 +159,42 @@ const MainContextProvider = ({children}) => {
         if (localStorage.getItem("user-tasks")) {
             setTasks(JSON.parse(localStorage.getItem("user-tasks")));
         }
+        if (localStorage.getItem("convertApiSecretKey")) {
+            setConvertApiSecretKey(localStorage.getItem("convertApiSecretKey"));
+        }
         getAllNews().then((res) => {
             setAllNews(res.data);
         });
     }, []);
-    const context = {
-        backGroundImage,
-        setBackgroundImage,
-        userCity,
-        setUserCity,
-        favoritePages,
-        addFavoritePage,
-        deleteFavoritePage,
-        tasks,
-        addTask,
-        deleteTask,
-        editTask,
-        calendarSelectedDay,
-        setCalendarSelectedDay,
-        allNews,
-    };
+    const context = useMemo(
+        () => ({
+            backGroundImage,
+            setBackgroundImage,
+            userCity,
+            setUserCity,
+            favoritePages,
+            addFavoritePage,
+            deleteFavoritePage,
+            tasks,
+            addTask,
+            deleteTask,
+            editTask,
+            calendarSelectedDay,
+            setCalendarSelectedDay,
+            allNews,
+            convertApiSecretKey,
+            changeConvertApiSecretKey,
+        }),
+        [
+            backGroundImage,
+            userCity,
+            favoritePages,
+            tasks,
+            calendarSelectedDay,
+            allNews,
+            convertApiSecretKey,
+        ],
+    );
     return (
         <MainContext.Provider value={context}>{children}</MainContext.Provider>
     );

@@ -17,7 +17,9 @@ const SimpleNews = ({
                 height,
                 width,
                 borderRadius,
-                backgroundImage: news.imageUrl,
+                backgroundImage: `url(${news.imageUrl})`,
+                backgroundRepeat:"no-repeat",
+                backgroundSize:"cover"
             }}>
             <a
                 href={news.readMoreUrl}

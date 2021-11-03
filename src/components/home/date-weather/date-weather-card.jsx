@@ -41,7 +41,7 @@ const DateWeatherCard = () => {
     return (
         <Card
             borderRadius={"20px"}
-            title={date + " | " + time}
+            title={date + " " + time}
             text={"weather : " + weather}
             badgeLabel={temp}
             imageSource={image}

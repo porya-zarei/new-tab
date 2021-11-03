@@ -1,5 +1,5 @@
-import {useContext, useEffect} from "react";
-import {fetcher} from "../axios/http";
+import {useContext} from "react";
+import { ToastContainer } from "react-toastify";
 import {MainContext} from "../contexts/main/main-context";
 import Footer from "./footer/footer";
 import Header from "./header/header";
@@ -10,6 +10,7 @@ const Layout = ({children}) => {
 
     return (
         <div
+            className="ext-fontfamily ext-custom-scrollbar"
             style={{
                 width: "100%",
                 height: "100vh",
@@ -21,6 +22,7 @@ const Layout = ({children}) => {
                 overflowY: "auto",
             }}>
             <Header />
+            <ToastContainer theme="colored" />
             <Main>{children}</Main>
             <Footer />
         </div>

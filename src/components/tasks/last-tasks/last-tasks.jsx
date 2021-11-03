@@ -6,7 +6,7 @@ const LastTasks = () => {
     return (
         <div className="row p-2 m-0 rounded-3 bg-light">
             <div className="col-12 p-0 m-0">
-                <strong>last tasks :</strong>
+                <strong>The latest tasks :</strong>
             </div>
             {tasks.slice(0, 2).map((task) => (
                 <div key={task.id} className="col-12 p-0 m-0 center mb-1">

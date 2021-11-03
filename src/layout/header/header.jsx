@@ -22,6 +22,13 @@ const Header = () => {
                     exact
                     activeClassName={classes.navLinkActive}
                     className={classes.navLink}
+                    to="/tools">
+                    Tools
+                </NavLink>
+                <NavLink
+                    exact
+                    activeClassName={classes.navLinkActive}
+                    className={classes.navLink}
                     to="/setting">
                     Setting
                 </NavLink>
