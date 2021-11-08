@@ -9,8 +9,12 @@ const LastTasks = () => {
                 <strong>The latest tasks :</strong>
             </div>
             {tasks.slice(0, 2).map((task) => (
-                <div key={task.id} className="col-12 p-0 m-0 center mb-1">
-                    <div className="h-100 w-100 center p-2">{task.title}</div>
+                <div
+                    key={task.id}
+                    className="col-12 p-0 m-0 -new-tab-center mb-1">
+                    <div className="h-100 w-100 -new-tab-center p-2">
+                        {task.title}
+                    </div>
                 </div>
             ))}
         </div>

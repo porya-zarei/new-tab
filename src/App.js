@@ -1,4 +1,4 @@
-import {BrowserRouter} from "react-router-dom";
+import {MemoryRouter} from "react-router-dom";
 import SwitchRouter from "./components/switch-router/switch-router";
 import MainContextProvider from "./contexts/main/main-context";
 import Layout from "./layout/layout";
@@ -6,13 +6,13 @@ import Layout from "./layout/layout";
 function App() {
     return (
         <div>
-            <BrowserRouter>
+            <MemoryRouter>
                 <MainContextProvider>
                     <Layout>
                         <SwitchRouter />
                     </Layout>
                 </MainContextProvider>
-            </BrowserRouter>
+            </MemoryRouter>
         </div>
     );
 }

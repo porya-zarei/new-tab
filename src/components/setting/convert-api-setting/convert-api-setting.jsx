@@ -21,7 +21,7 @@ const ConvertApiSetting = () => {
             <div className="col-12 p-0 m-0">
                 <button
                     onClick={() => setShow((p) => !p)}
-                    className="btn btn-dark center w-100">
+                    className="btn btn-dark -new-tab-center w-100">
                     Set Secret key
                 </button>
             </div>
@@ -29,15 +29,15 @@ const ConvertApiSetting = () => {
                 <div className="col-12 p-0 m-0 mt-2">
                     <div className="w-100 h-auto row p-0 m-0">
                         <div className="col-8 p-0 m-0">
-                            <div className="p-1 center rounded-2 h-100 bg-white border-solid border-dark border-2 w-100">
+                            <div className="p-1 -new-tab-center rounded-2 h-100 bg-white -new-tab-border-solid border-dark border-2 w-100">
                                 <input
                                     value={secret}
                                     onChange={handleChange}
-                                    className="outline-none h-100 bg-transparent border-none w-100"
+                                    className="-new-tab-outline-none h-100 bg-transparent -new-tab-border-none w-100"
                                 />
                             </div>
                         </div>
-                        <div className="col-4 h-100 center p-0 m-0">
+                        <div className="col-4 h-100 -new-tab-center p-0 m-0">
                             <button
                                 onClick={handleSetSecretKey}
                                 className="btn btn-info w-100">
@@ -52,7 +52,9 @@ const ConvertApiSetting = () => {
                                     className="mx-2 text-info text-decoration-none">
                                     Convert Api
                                 </a>
-                                and in your dashboard, copy your secret key and paste it here.<br/>
+                                and in your dashboard, copy your secret key and
+                                paste it here.
+                                <br />
                                 we save it for you
                             </p>
                         </div>

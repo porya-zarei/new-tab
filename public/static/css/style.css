@@ -1,20 +1,14 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .ext-fontfamily{
     font-family: monospace;
 }
 
-.center{
+.-new-tab-center{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.bg-tarnsparent{
+.-new-tab-bg-tarnsparent{
     background-color: transparent;
 }
 
@@ -33,18 +27,18 @@
 }
 /** scrool bar */
 
-.h-250px{
+.-new-tab-h-250px{
     height: 250px;
 }
 
-.border-none{
+.-new-tab-border-none{
     border: none;
 }
 
-.border-solid{
+.-new-tab-border-solid{
     border-style: solid;
 }
 
-.outline-none{
+.-new-tab-outline-none{
     outline: none;
 }

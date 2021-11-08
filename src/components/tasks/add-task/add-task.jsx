@@ -44,7 +44,7 @@ const AddTask = ({show, setShow}) => {
         show && (
             <div className={classes.addTaskContainer}>
                 <div className="card rounded p-3 bg-white rounded-3">
-                    <div className="card-header bg-tarnsparent d-inline-flex justify-content-between">
+                    <div className="card-header -new-tab-bg-tarnsparent d-inline-flex justify-content-between">
                         <h5 className="w-auto">Add task</h5>
                         <button
                             onClick={() => setShow((p) => !p)}
@@ -101,7 +101,7 @@ const AddTask = ({show, setShow}) => {
                                 <button
                                     onClick={() => setTaskDone((p) => !p)}
                                     className={
-                                        "btn w-100 h-100 center rounded-pill " +
+                                        "btn w-100 h-100 -new-tab-center rounded-pill " +
                                         (taskDone
                                             ? "btn-success"
                                             : "btn-danger")

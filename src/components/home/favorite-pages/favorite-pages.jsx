@@ -24,7 +24,9 @@ const FavoritePages = () => {
         <div className={classes.linksContainer}>
             {favoritePages.map((page) => (
                 <div key={page.id} className={classes.linkContainer}>
-                    <button onClick={()=>deleteFavoritePage(page.id)} className={classes.deleteBtn}>
+                    <button
+                        onClick={() => deleteFavoritePage(page.id)}
+                        className={classes.deleteBtn}>
                         <i className="bi-trash-fill"></i>
                     </button>
                     <a
@@ -59,12 +61,12 @@ const FavoritePages = () => {
                     />
                     <button
                         onClick={handleAddPage}
-                        className="btn btn-success h-100 center">
+                        className="btn btn-success h-100 -new-tab-center">
                         add
                     </button>
                     <button
                         onClick={cancelAdding}
-                        className="btn btn-warning h-100 center">
+                        className="btn btn-warning h-100 -new-tab-center">
                         cancel
                     </button>
                 </div>

@@ -133,7 +133,7 @@ const Convertor = () => {
                     </div>
                     <div className={classes.middlePart}>
                         <div className={classes.part}>
-                            <div className="w-100 h-100 center fs-1">
+                            <div className="w-100 h-100 -new-tab-center fs-1">
                                 <FileIcon fileName={selectedFile?.name} />
                                 <i className="bi-arrow-right mx-2"></i>
                                 <FileIcon
