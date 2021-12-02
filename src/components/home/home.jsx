@@ -1,10 +1,15 @@
-import SimpleNewsList from "../news/simple-news/simple-news-list";
+import {lazy, Suspense} from "react";
+// import SimpleNewsList from "../news/simple-news/simple-news-list";
 import Container from "../switch-router/container";
 import LastTasks from "../tasks/last-tasks/last-tasks";
 import MyCalendar from "./calendar/my-calendar";
 import DateWeatherCard from "./date-weather/date-weather-card";
 import FavoritePages from "./favorite-pages/favorite-pages";
 import SearchInput from "./search-input/search-input";
+
+const SimpleNewsList = lazy(() =>
+    import("../news/simple-news/simple-news-list"),
+);
 
 const HomePage = () => {
     return (
@@ -23,7 +28,9 @@ const HomePage = () => {
                     </div>
                     <div className="col-2 p-0 m-0">
                         <div className="h-100 w-100 p-2">
-                            <SimpleNewsList />
+                            <Suspense fallback={<></>}>
+                                <SimpleNewsList />
+                            </Suspense>
                         </div>
                     </div>
                     <div className="col-4 p-0 m-0">
