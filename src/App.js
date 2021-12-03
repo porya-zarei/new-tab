@@ -6,13 +6,13 @@ import Layout from "./layout/layout";
 function App() {
     return (
         <div>
-            <MemoryRouter>
-                <MainContextProvider>
+            <MainContextProvider>
+                <MemoryRouter>
                     <Layout>
                         <SwitchRouter />
                     </Layout>
-                </MainContextProvider>
-            </MemoryRouter>
+                </MemoryRouter>
+            </MainContextProvider>
         </div>
     );
 }

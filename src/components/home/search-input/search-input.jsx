@@ -5,6 +5,13 @@ const SearchInput = () => {
     const handleSearch = () => {
         searchText.length > 0 &&
             window.open("http://google.com/search?q=" + searchText, "_blank");
+        setSearchText("");
+    };
+    const handlePressEnter = (e) => {
+        const isInputFocused = document.activeElement.id === "search-input";
+        if (e.keyCode === 13 && isInputFocused) {
+            handleSearch();
+        }
     };
     return (
         <div className="w-100 px-3">
@@ -14,7 +21,9 @@ const SearchInput = () => {
                     onChange={(e) => {
                         setSearchText(e.target.value);
                     }}
+                    onKeyUp={handlePressEnter}
                     value={searchText}
+                    id="search-input"
                     type="text"
                     placeholder="search ..."
                 />

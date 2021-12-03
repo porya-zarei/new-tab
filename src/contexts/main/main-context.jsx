@@ -1,5 +1,7 @@
 import {createContext, useEffect, useMemo, useState} from "react";
 import {getAllNews} from "../../apis/get-news";
+import {fetcher} from "../../axios/http";
+import {weather_API_Key} from "../../config/global";
 
 export const getRandom = () => Math.random().toString().slice(0, 5);
 
@@ -63,7 +65,19 @@ export const MainContext = createContext({
         },
     ],
     convertApiSecretKey: "",
-    changeConvertApiSecretKey: (secret="") => {},
+    changeConvertApiSecretKey: (secret = "") => {},
+    weatherApiData: {
+        imageUrl: "",
+        temperature: "",
+        weather: "",
+    },
+    setWeatherApiData: (
+        data = {
+            imageUrl: "",
+            temperature: "",
+            weather: "",
+        },
+    ) => {},
 });
 const MainContextProvider = ({children}) => {
     const [backGroundImage, setBackgroundImage] = useState(
@@ -80,10 +94,16 @@ const MainContextProvider = ({children}) => {
 
     const [convertApiSecretKey, setConvertApiSecretKey] = useState();
 
-    const changeConvertApiSecretKey = (secret) =>{
-        localStorage.setItem("convertApiSecretKey",secret);
+    const [weatherApiData, setWeatherApiData] = useState({
+        imageUrl: "/static/images/moon.png",
+        weather: "",
+        temperature: "",
+    });
+
+    const changeConvertApiSecretKey = (secret) => {
+        localStorage.setItem("convertApiSecretKey", secret);
         setConvertApiSecretKey(secret);
-    }
+    };
 
     const addTask = (
         task = {
@@ -163,9 +183,29 @@ const MainContextProvider = ({children}) => {
             setConvertApiSecretKey(localStorage.getItem("convertApiSecretKey"));
         }
         getAllNews().then((res) => {
-            setAllNews(res.data);
+            setAllNews(res.data.sort((a, b) => Math.random() - 0.5)); 
         });
     }, []);
+    useEffect(() => {
+        fetcher({
+            url: `http://api.weatherapi.com/v1/current.json?key=${weather_API_Key}&q=${userCity}&aqi=no`,
+        }).then(({data}) => {
+            console.log("data => ", data);
+            const imageUrl = "https:" + data?.current?.condition?.icon;
+            const weather = data?.current?.condition?.text;
+            const temperature =
+                "Temp : " +
+                data.current.temp_c +
+                " C , " +
+                data.current.temp_f +
+                " F";
+            setWeatherApiData({
+                imageUrl,
+                weather,
+                temperature,
+            });
+        });
+    }, [userCity]);
     const context = useMemo(
         () => ({
             backGroundImage,
@@ -184,6 +224,8 @@ const MainContextProvider = ({children}) => {
             allNews,
             convertApiSecretKey,
             changeConvertApiSecretKey,
+            weatherApiData,
+            setWeatherApiData,
         }),
         [
             backGroundImage,
@@ -193,6 +235,7 @@ const MainContextProvider = ({children}) => {
             calendarSelectedDay,
             allNews,
             convertApiSecretKey,
+            weatherApiData,
         ],
     );
     return (

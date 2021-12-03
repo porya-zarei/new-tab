@@ -6,29 +6,51 @@ const Header = () => {
             <nav className={classes.listItems}>
                 <NavLink
                     exact
-                    activeClassName={classes.navLinkActive}
-                    className={classes.navLink}
+                    className={({isActive}) =>
+                        isActive
+                            ? classes.navLinkActive + " " + classes.navLink
+                            : classes.navLink
+                    }
                     to="/">
                     Home
                 </NavLink>
                 <NavLink
                     exact
-                    activeClassName={classes.navLinkActive}
-                    className={classes.navLink}
+                    className={({isActive}) =>
+                        isActive
+                            ? classes.navLinkActive + " " + classes.navLink
+                            : classes.navLink
+                    }
                     to="/tasks">
                     Tasks
                 </NavLink>
                 <NavLink
                     exact
-                    activeClassName={classes.navLinkActive}
-                    className={classes.navLink}
+                    className={({isActive}) =>
+                        isActive
+                            ? classes.navLinkActive + " " + classes.navLink
+                            : classes.navLink
+                    }
+                    to="/news">
+                    News
+                </NavLink>
+                <NavLink
+                    exact
+                    className={({isActive}) =>
+                        isActive
+                            ? classes.navLinkActive + " " + classes.navLink
+                            : classes.navLink
+                    }
                     to="/tools">
                     Tools
                 </NavLink>
                 <NavLink
                     exact
-                    activeClassName={classes.navLinkActive}
-                    className={classes.navLink}
+                    className={({isActive}) =>
+                        isActive
+                            ? classes.navLinkActive + " " + classes.navLink
+                            : classes.navLink
+                    }
                     to="/setting">
                     Setting
                 </NavLink>
